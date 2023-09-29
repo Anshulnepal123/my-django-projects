@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old Blog Template</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        .container {
+            max-width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .btn-container {
+            width: 100px; /* Adjust the width as needed */
+        }
+
+        .btn {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .edit{
+            background-color: rgb(28, 28, 199);
+            font-weight: bold;
+            padding: 4px;
+            border: 2px solid  rgb(28, 28, 199);
+            border-radius: 3px;
+            width: 70px;
+
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>My Old Blog</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for n in blog %}
+                <tr>
+                    <td>{{ n.title }}</td>
+                    <td>{{ n.content }}</td>
+                    <td class="btn-container">
+                         <button class="edit"> <a href="editblog/{{n.id}}">Edit </a></button>
+                         <button class="btn btn-danger"> <a href="delete/{{n.id}}">Delete </a></button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Include Bootstrap JS (Optional, if you need Bootstrap JavaScript features) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock body %}
+
+
+

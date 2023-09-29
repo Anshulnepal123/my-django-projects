@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+        /* Body Styles */
+        body {
+            font-family:'Merriweather', serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+
+        /* Container Styles */
+        .container {
+            max-width: 90%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+        }
+
+        /* Title Styles */
+        h1 {
+            font-size: 28px;
+            color: #333;
+            background-color: whitesmoke;
+            /* height: 15vh; */
+            text-align: center;
+        }
+
+        /* "Create a New Blog Post" Button Styles */
+        .new-blog-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-left: 80vh;
+            margin-top: 5vh;
+
+        }
+        .pre{
+            display: inline-block;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius:5px ;
+            font-weight: bold;
+            padding: 10px 20px;
+            margin-left: 80%;
+            color: white;
+
+        }
+
+
+        .new-blog-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Blog Post Styles */
+        .blog-post {
+            background-color: #fff;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        
+        }
+
+        .blog-post h3 a {
+            font-size: 24px;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+            text-decoration: none;
+        }
+        .blog-post h3 a:hover{
+            color: aqua;
+        }
+        .blog-post p {
+            font-size: 16px;
+            color: #555;
+            padding: 20px;
+            margin: 0;
+            text-decoration: none;
+        }
+
+        /* "Old Blog Posts" Heading Styles */
+        h2 {
+            font-size: 22px;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+        <h1>Welcome to Write blog!</h1>
+        <a href="new-blog" class="new-blog-button">Create a New Blog Post</a>
+    <div class="container">
+        <h2>Read your Old Blog Posts</h2>
+        {% for n in blog%}
+        <div class="blog-post">
+            
+            <h3><a href="blogdetails/{{n.id}}">{{n.title}}</h3></a>
+            <p>{{n.content}}</p>
+        </div>
+        {%endfor%}
+    </div>
+    <div class="pre">
+        {%if blog.has_previous%}
+        <a href="?page={{blog.previous_page_number}}">Previous</a> 
+        {%endif%}
+        {%if blog.has_next%}
+        <a  href="?page={{blog.next_page_number}}">|Next </a>
+        {%endif%}
+    </div>
+    {{blog.number}} of {{blog.paginator.num_pages}} 
+    
+</body>
+</html>
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+

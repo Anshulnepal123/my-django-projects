@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="static/base.css"> -->
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto:wght@500&display=swap');
+:root {
+    --main-bg-color: #273237;
+  }
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-color: var(--main-bg-color);
+    height: 12vh;
+
+}
+nav{
+    display: flex;
+    
+ }
+ nav ul{ display:flex;
+    /* justify-content: center; */
+    padding: 10px -10px 5px 650px;
+    font-size: 18px;
+    
+}
+nav ul li{
+    display: inline-block;
+    list-style: none ;
+    padding: 25px;
+    /* padding-top: 20px; */
+} 
+nav ul li a{
+    color:white;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}   
+nav ul li a:hover{
+    color:aqua;
+}   
+footer{
+    background-color: var(--main-bg-color);
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: white;
+    height: 9vh;
+    padding-top: 10px;
+    margin-top: 20vh;
+}
+/* body{
+    background:  #ffed0057;
+    height: 90vh;
+ }  */
+</style>
+<header>
+    <nav>
+        <!-- <div class="logo"><img src="media/create.png" alt=""></div> -->
+        <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="new-blog">New-Blog</a></li>
+                <li><a href="old-blog">Old-Blog</a></li>
+                <li><a href="contact">Contact</a></li>
+                <li><a href="login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+<body>
+   {% block body %}{% endblock body %}
+</body>
+    <footer>
+        &copy; All rights reserved
+    </footer>
+</html>
