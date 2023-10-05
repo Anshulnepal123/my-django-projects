@@ -1,7 +1,7 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.core.mail import EmailMultiAlternatives, send_mail
 from django.core.paginator import Paginator
 from django.shortcuts import HttpResponse, get_object_or_404, redirect, render
-
 from myapp.models import BlogPost, Login
 
 from .forms import *
@@ -9,7 +9,6 @@ from .forms import *
 
 # Create your views here.
 def index(request):
-    
     blog = BlogPost.objects.all()
     p = Paginator(blog,2)
     page = request.GET.get('page')
@@ -58,16 +57,8 @@ def contact(request):
         return redirect('/')
     return render(request,'contact.html')
 def login(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get("email")
-        password = request.POST.get("password")
-        log = Login(name=name,email=email,pw=password)
-        log.save()
-        return redirect('/')
-    
-
-    return render(request,'login.html')
+   fm = UserCreationForm()
+   return render(request,'login.html',{'form':fm})
 
 def delete(request,blogid):
     dele = BlogPost.objects.get(id=blogid)
